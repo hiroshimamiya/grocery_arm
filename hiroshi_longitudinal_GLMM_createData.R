@@ -60,10 +60,10 @@ rm(list=ls())
 source("loadFunc.R")
 
 # mini is being loaded, so basket.sample no longer needed 
-#basket.sample <- readRDS("~/R/nielsenAnalysis/kodyMetro/data_hiroshi/basket.sample_clean_flowchart.rds")
+#basket.sample <- readRDS("~/R/nielsenAnalysis/kodyloCardData/data_hiroshi/basket.sample_clean_flowchart.rds")
 
-upc.class <- dbGetQuery(con, "select * from kodyandrew.metro_upc_class;")
-upc.class.full <- dbGetQuery(con, "select * from kodyandrew.metro_upc_class_full;")
+upc.class <- dbGetQuery(con, "select * from kodyandrew.loCardData_upc_class;")
+upc.class.full <- dbGetQuery(con, "select * from kodyandrew.loCardData_upc_class_full;")
 
 cards.mtl　<- dbGetQuery(con, "select * from kodyandrew.cards_mtl_hiroshi_flowchart")
 
@@ -103,9 +103,9 @@ pc2da2sesAggMtl <- pc2da2sesAggMtl %>%
   left_join(pc2da2ct)
 dim(pc2da2sesAggMtl)
 
-store_ses_buffer <- dbGetQuery(geoH, "select * from hiroshi.hiroshi_metrostore_ses_buffer_storeid;")
+store_ses_buffer <- dbGetQuery(geoH, "select * from hiroshi.hiroshi_loCardDatastore_ses_buffer_storeid;")
 
-undup <- readRDS("~/R/nielsenAnalysis/kodyMetro/data_hiroshi/undup_mtl_hiroshi_flowChart.rds")
+undup <- readRDS("~/R/nielsenAnalysis/kodyloCardData/data_hiroshi/undup_mtl_hiroshi_flowChart.rds")
 
 
 ### SES on card --------------------------------

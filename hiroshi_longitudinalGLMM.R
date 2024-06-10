@@ -214,9 +214,9 @@ confint.glmer <- function(object, params, paramNames, foodName = "food",...) {
 paramName = c("Soft drinks", "Income", "Education", "Soda X Income", "Soda X Education")
 params <- c("cat_soda", "income", "educ", "income:cat_soda", "cat_soda:educ")
 
-fit_chips <- readRDS("~/R/nielsenAnalysis/kodyMetro/data_hiroshi/fitGlmer_chips.rds")
-fit_candy <- readRDS("~/R/nielsenAnalysis/kodyMetro/data_hiroshi/fitGlmer_candy.rds")
-fit_juice <- readRDS("~/R/nielsenAnalysis/kodyMetro/data_hiroshi/fitGlmer_juice.rds")
+fit_chips <- readRDS("~/R/nielsenAnalysis/kodyloCardData/data_hiroshi/fitGlmer_chips.rds")
+fit_candy <- readRDS("~/R/nielsenAnalysis/kodyloCardData/data_hiroshi/fitGlmer_candy.rds")
+fit_juice <- readRDS("~/R/nielsenAnalysis/kodyloCardData/data_hiroshi/fitGlmer_juice.rds")
 
 tidy(fit_chips,conf.int=TRUE,exponentiate=TRUE,effects="fixed")
 tidy(fit_candy,conf.int=TRUE,exponentiate=TRUE,effects="fixed")
@@ -240,9 +240,9 @@ rSoda <- r[r$paramsNames == "Soft drinks", ]
 
 
 ### Veggie #############
-fitGlmer_veg_canVeg <- readRDS("~/R/nielsenAnalysis/kodyMetro/data_hiroshi/fitGlmer_veg_canVeg.rds")
-fitGlmer_veg_salad <- readRDS("~/R/nielsenAnalysis/kodyMetro/data_hiroshi/fitGlmer_veg_salad.rds")
-fitGlmer_veg_cheese <- readRDS("~/R/nielsenAnalysis/kodyMetro/data_hiroshi/fitGlmer_veg_cheese.rds")
+fitGlmer_veg_canVeg <- readRDS("~/R/nielsenAnalysis/kodyloCardData/data_hiroshi/fitGlmer_veg_canVeg.rds")
+fitGlmer_veg_salad <- readRDS("~/R/nielsenAnalysis/kodyloCardData/data_hiroshi/fitGlmer_veg_salad.rds")
+fitGlmer_veg_cheese <- readRDS("~/R/nielsenAnalysis/kodyloCardData/data_hiroshi/fitGlmer_veg_cheese.rds")
 
 paramNames = c("Vegetable", "Income", "Education", "Veg X Income", "Veg X Education")
 params <- c("cat_veggie", "income", "educ", "income:cat_veggie", "educ:cat_veggie")
@@ -265,9 +265,9 @@ rVeg <- r[r$paramsNames == "Vegetable", ]
 
 
 ### Fruits ###########
-fitGee_fru_cer <- readRDS("~/R/nielsenAnalysis/kodyMetro/data_hiroshi/fitGlmer_fru_cer.rds")
-fitGee_fru_yog <- readRDS("~/R/nielsenAnalysis/kodyMetro/data_hiroshi/fitGlmer_fru_yog.rds")
-fitGee_fru_salad <- readRDS("~/R/nielsenAnalysis/kodyMetro/data_hiroshi/fitGlmer_fru_salad.rds")
+fitGee_fru_cer <- readRDS("~/R/nielsenAnalysis/kodyloCardData/data_hiroshi/fitGlmer_fru_cer.rds")
+fitGee_fru_yog <- readRDS("~/R/nielsenAnalysis/kodyloCardData/data_hiroshi/fitGlmer_fru_yog.rds")
+fitGee_fru_salad <- readRDS("~/R/nielsenAnalysis/kodyloCardData/data_hiroshi/fitGlmer_fru_salad.rds")
 
 paramNames = c("Fruits", "Income", "Education", "Fruits X Income", "Fruits X Education")
 params <- c("cat_fruits", "income", "educ", "income:cat_fruits", "educ:cat_fruits")

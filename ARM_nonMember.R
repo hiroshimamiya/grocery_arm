@@ -11,7 +11,7 @@ source("loadFunc.R")
 
 ### Load data 
 transactions_nc <- readRDS("data_hiroshi/transaction_nonMember.rds")
-transactions_c <- readRDS("~/R/nielsenAnalysis/kodyMetro/data_hiroshi/transactions_card.rds")
+transactions_c <- readRDS("~/R/nielsenAnalysis/kodyloCardData/data_hiroshi/transactions_card.rds")
 
 
 numItems = 10

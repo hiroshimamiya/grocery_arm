@@ -22,15 +22,15 @@ confint.glmer <- function(object, params, paramNames, foodName = "food",...) {
 
 bool_saveForest = FALSE
 
-datPath <- ifelse(as.character(Sys.info()["nodename"]) == "DB-COMP",  "/home/hiroshi/projects/kodyMetro/", "~/R/nielsenAnalysis/kodyMetro/")
+datPath <- ifelse(as.character(Sys.info()["nodename"]) == "DB-COMP",  "/home/hiroshi/projects/kodyloCardData/", "~/R/nielsenAnalysis/kodyloCardData/")
 
 ##########################################################################
 paramName = c("Soft drinks", "Income", "Education", "Soda X Income", "Soda X Education")
 params <- c("cat_soda", "income", "educ", "income:cat_soda", "cat_soda:educ")
 
-fit_chips <- readRDS("/home/hiroshi/projects/kodyMetro/data_hiroshi/fitGlmer_soda_chips_withInterX.rds")
-fit_candy <- readRDS("/home/hiroshi/projects/kodyMetro/data_hiroshi/fitGlmer_soda_candy_withInterX.rds")
-fit_juice <- readRDS("/home/hiroshi/projects/kodyMetro/data_hiroshi/fitGlmer_soda_juice_withInterX.rds")
+fit_chips <- readRDS("/home/hiroshi/projects/kodyloCardData/data_hiroshi/fitGlmer_soda_chips_withInterX.rds")
+fit_candy <- readRDS("/home/hiroshi/projects/kodyloCardData/data_hiroshi/fitGlmer_soda_candy_withInterX.rds")
+fit_juice <- readRDS("/home/hiroshi/projects/kodyloCardData/data_hiroshi/fitGlmer_soda_juice_withInterX.rds")
 
 tidy(fit_chips,conf.int=TRUE,exponentiate=TRUE,effects="fixed")
 tidy(fit_candy,conf.int=TRUE,exponentiate=TRUE,effects="fixed")
@@ -57,9 +57,9 @@ rSoda <- r[r$paramsNames == "Soft drinks", ]
 
 
 ### Veggie #############
-fitGlmer_veg_canVeg <- readRDS("/home/hiroshi/projects/kodyMetro/data_hiroshi/fitGlmer_veg_canVeg_withInterX.rds")
-fitGlmer_veg_salad <- readRDS("/home/hiroshi/projects/kodyMetro/data_hiroshi/fitGlmer_veg_salad_withInterX.rds")
-fitGlmer_veg_cheese <- readRDS("/home/hiroshi/projects/kodyMetro/data_hiroshi/fitGlmer_veg_cheese_withInterX.rds")
+fitGlmer_veg_canVeg <- readRDS("/home/hiroshi/projects/kodyloCardData/data_hiroshi/fitGlmer_veg_canVeg_withInterX.rds")
+fitGlmer_veg_salad <- readRDS("/home/hiroshi/projects/kodyloCardData/data_hiroshi/fitGlmer_veg_salad_withInterX.rds")
+fitGlmer_veg_cheese <- readRDS("/home/hiroshi/projects/kodyloCardData/data_hiroshi/fitGlmer_veg_cheese_withInterX.rds")
 
 paramNames = c("Vegetable", "Income", "Education", "Veg X Income", "Veg X Education")
 params <- c("cat_veggie", "income", "educ", "income:cat_veggie", "educ:cat_veggie")
@@ -84,9 +84,9 @@ rVeg <- r[r$paramsNames == "Vegetable", ]
 
 
 ### Fruits ###########
-fitGlmer_fru_cer <- readRDS("/home/hiroshi/projects/kodyMetro/data_hiroshi/fitGlmer_fru_cer_withInterX.rds")
-fitGlmer_fru_yog <- readRDS("/home/hiroshi/projects/kodyMetro/data_hiroshi/fitGlmer_fru_yog_withInterX.rds")
-fitGlmer_fru_salad <- readRDS("/home/hiroshi/projects/kodyMetro/data_hiroshi/fitGlmer_fru_salad_withInterX.rds")
+fitGlmer_fru_cer <- readRDS("/home/hiroshi/projects/kodyloCardData/data_hiroshi/fitGlmer_fru_cer_withInterX.rds")
+fitGlmer_fru_yog <- readRDS("/home/hiroshi/projects/kodyloCardData/data_hiroshi/fitGlmer_fru_yog_withInterX.rds")
+fitGlmer_fru_salad <- readRDS("/home/hiroshi/projects/kodyloCardData/data_hiroshi/fitGlmer_fru_salad_withInterX.rds")
 
 paramNames = c("Fruits", "Income", "Education", "Fruits X Income", "Fruits X Education")
 params <- c("cat_fruits", "income", "educ", "income:cat_fruits", "educ:cat_fruits")
@@ -157,14 +157,14 @@ if(bool_saveForest){
 
 #https://stackoverflow.com/questions/55693401/in-r-read-files-from-folder-in-a-list-and-assign-list-element-names-by-the-file
 
-li <- list.files("/home/hiroshi/projects/kodyMetro/data_hiroshi", pattern="noIntX.rds", full.names = TRUE)
+li <- list.files("/home/hiroshi/projects/kodyloCardData/data_hiroshi", pattern="noIntX.rds", full.names = TRUE)
 liX <- lapply(li, function(x) str_replace(x, "_noIntX", "_withInterX"))
   
 listFile <- lapply(li, readRDS)
 listFileX <- lapply(liX, readRDS)
 
 aicModels <- data.frame(
-  Modelnames = unlist(lapply(li, str_remove, "/home/hiroshi/R/nielsenAnalysis/kodyMetro/data_hiroshi//fitGlmer_")), 
+  Modelnames = unlist(lapply(li, str_remove, "/home/hiroshi/R/nielsenAnalysis/kodyloCardData/data_hiroshi//fitGlmer_")), 
   `AIC(without interactions)` = unlist(lapply(listFile, AIC)), 
   `AIC(with interactions)` = unlist(lapply(listFileX, AIC)), 
   diff = unlist(lapply(listFile, AIC)) - unlist(lapply(listFileX, AIC))
@@ -280,9 +280,9 @@ AIC(noB); AIC(B)
 
 ### Regression on weakly associated items -------------------------------------
 ### Veggie #############
-fitGlmer_veg_yog <- readRDS("/home/hiroshi/projects/kodyMetro/data_hiroshi/fitGlmer_yog_veg_withInterX.rds")
-fitGlmer_veg_sau <- readRDS("/home/hiroshi/projects/kodyMetro/data_hiroshi/fitGlmer_sau_veg_withInterX.rds")
-fitGlmer_veg_cer <- readRDS("/home/hiroshi/projects/kodyMetro/data_hiroshi/fitGlmer_cer_veg_withInterX.rds")
+fitGlmer_veg_yog <- readRDS("/home/hiroshi/projects/kodyloCardData/data_hiroshi/fitGlmer_yog_veg_withInterX.rds")
+fitGlmer_veg_sau <- readRDS("/home/hiroshi/projects/kodyloCardData/data_hiroshi/fitGlmer_sau_veg_withInterX.rds")
+fitGlmer_veg_cer <- readRDS("/home/hiroshi/projects/kodyloCardData/data_hiroshi/fitGlmer_cer_veg_withInterX.rds")
 
 paramNames = c("Vegetable", "Income", "Education")
 params <- c("cat_veggie", "income", "educ")

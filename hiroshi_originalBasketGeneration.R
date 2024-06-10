@@ -1,7 +1,7 @@
 ### Kody's old basket data 
 ### Load data ----------------------------
 drv <- dbDriver("PostgreSQL")
-con <- dbConnect(drv, dbname="metro", host="132.216.183.3", 
+con <- dbConnect(drv, dbname="loCardData", host="132.216.183.3", 
                  user="kodyandrew", pass="********")
 # set seed
 set.seed(42)
@@ -10,7 +10,7 @@ set.seed(42)
 '%!in%' <- function(x,y)!('%in%'(x,y))
 
 
-upc.class <- dbGetQuery(con, "select * from kodyandrew.metro_upc_class;")
+upc.class <- dbGetQuery(con, "select * from kodyandrew.loCardData_upc_class;")
 
 basket.sample <- readRDS("data_hiroshi/basket.sample.rds")
 
